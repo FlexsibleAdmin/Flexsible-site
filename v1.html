@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexsible — Ship AI Products Faster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- REUSABLE LOGO DEFS -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- Slack -->
+      <symbol id="logo-slack" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#4A154B"/>
+        <rect x="7"  y="11" width="24" height="5.5" rx="2.75" fill="#36C5F0"/>
+        <circle cx="9"    cy="13.75" r="4.5" fill="#36C5F0"/>
+        <rect x="7"  y="21.5" width="24" height="5.5" rx="2.75" fill="#ECB22E"/>
+        <circle cx="29"   cy="24.25" r="4.5" fill="#ECB22E"/>
+        <rect x="11" y="7"  width="5.5" height="24" rx="2.75" fill="#E01E5A"/>
+        <circle cx="13.75" cy="9"    r="4.5" fill="#E01E5A"/>
+        <rect x="21.5" y="7" width="5.5" height="24" rx="2.75" fill="#2EB67D"/>
+        <circle cx="24.25" cy="29"   r="4.5" fill="#2EB67D"/>
+      </symbol>
+
+      <!-- GitHub -->
+      <symbol id="logo-github" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#24292F"/>
+        <path d="M19 6.5C12.1 6.5 6.5 12.1 6.5 19c0 5.5 3.6 10.2 8.5 11.8.6.1.8-.3.8-.6v-2.1c-3.4.7-4.1-1.6-4.1-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.6-1.4-5.6-6.1 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.4 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.4-1.3 3.4-1.3.7 1.7.3 3 .1 3.3.8.9 1.3 2 1.3 3.4 0 4.8-2.9 5.8-5.7 6.1.4.4.8 1.1.8 2.2V30.4c0 .3.2.7.8.6C27.9 29.2 31.5 24.5 31.5 19 31.5 12.1 25.9 6.5 19 6.5Z" fill="white"/>
+      </symbol>
+
+      <!-- Linear -->
+      <symbol id="logo-linear" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#5E6AD2"/>
+        <circle cx="19" cy="19" r="10.5" fill="none" stroke="white" stroke-width="2.5"/>
+        <path d="M19 8.5 L29.5 19 L22 26.5" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="19" y1="8.5" x2="11.5" y2="26" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </symbol>
+
+      <!-- Jira -->
+      <symbol id="logo-jira" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#0052CC"/>
+        <path d="M19.5 7.5 L31 19 L19.5 30.5 L8 19 Z" fill="none" stroke="white" stroke-width="0"/>
+        <path d="M19 7 C19 7 28 13 28 19 C28 25 19 31 19 31" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M19 7 C19 7 10 13 10 19 C10 25 19 31 19 31" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="19" cy="19" r="3.5" fill="white"/>
+      </symbol>
+
+      <!-- GitLab -->
+      <symbol id="logo-gitlab" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#FC6D26"/>
+        <path d="M19 29 L9 18.5 L12.5 9 L16 18.5 Z" fill="white" opacity="0.95"/>
+        <path d="M19 29 L29 18.5 L25.5 9 L22 18.5 Z" fill="white" opacity="0.7"/>
+        <path d="M9 18.5 L6 22 L19 29 L32 22 L29 18.5 Z" fill="white" opacity="0.85"/>
+      </symbol>
+
+      <!-- Vercel -->
+      <symbol id="logo-vercel" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#000000"/>
+        <polygon points="19,9 32,29 6,29" fill="white"/>
+      </symbol>
+
+      <!-- Figma -->
+      <symbol id="logo-figma" viewBox="0 0 38 38">
+        <rect width="38" height="38" rx="9" fill="#1E1E1E"/>
+        <circle cx="23" cy="19" r="5" fill="#1ABCFE"/>
+        <rect x="10" y="9"  width="10" height="10" rx="5 5 0 0" fill="#F24E1E"/>
+        <rect x="10" y="19" width="10" height="10" rx="0 0 5 5" fill="#0ACF83"/>
+        <rect x="20" y="9"  width="8"  height="10" rx="0 5 0 0" fill="#FF7262"/>
+        <circle cx="14.5" cy="19" r="0" fill="transparent"/>
+        <rect x="10" y="9"  width="10" height="10" rx="5 5 0 0" fill="#F24E1E"/>
+        <rect x="10" y="19" width="10" height="10" rx="0 0 5 5" fill="#A259FF"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:          #FAF9F6;
+      --bg-warm:     #F3F1EA;
+      --navy:        #0D1624;
+      --navy-mid:    #1A2B44;
+      --coral:       #E8432D;
+      --coral-light: #FF6B52;
+      --sage:        #6BAF78;
+      --amber:       #F0A030;
+      --indigo:      #5E6AD2;
+      --text:        #141414;
+      --text-mid:    #3C4555;
+      --muted:       #8A909E;
+      --border:      #E3E0D6;
+      --white:       #FFFFFF;
+      --page-max:    1200px;
+      --gutter:      max(72px, calc((100% - var(--page-max)) / 2));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.08;
+      font-weight: 600;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 18px 0;
+      transition: background .35s, box-shadow .35s;
+    }
+    .nav-inner {
+      padding: 0 var(--gutter);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav.scrolled {
+      background: rgba(250,249,246,.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 54px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 44px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-mid);
+      font-size: 14px; font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.btn-nav, .btn-nav {
+      background: var(--coral); color: #fff;
+      padding: 10px 22px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-nav:hover {
+      background: var(--coral-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px rgba(232,67,45,.3);
+    }
+    .btn-label-short { display: none; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 140px var(--gutter) 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -180px;
+      width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(232,67,45,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: var(--border);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-warm); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; color: var(--text-mid);
+      margin-bottom: 32px;
+      animation: fadeSlideUp .7s ease .1s both;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--sage);
+      animation: pulse 2.4s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .6; transform: scale(1.3); }
+    }
+    .hero h1 {
+      font-size: clamp(58px, 5.8vw, 88px);
+      color: var(--text); margin-bottom: 24px;
+      letter-spacing: -.025em;
+      animation: fadeSlideUp .7s ease .2s both;
+    }
+    .hero h1 em { font-style: italic; color: var(--coral); }
+    .hero-sub {
+      font-size: 18px; color: var(--text-mid);
+      line-height: 1.75; max-width: 460px; margin-bottom: 44px;
+      animation: fadeSlideUp .7s ease .35s both;
+    }
+    .hero-ctas {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      animation: fadeSlideUp .7s ease .5s both;
+    }
+    .btn-primary {
+      background: var(--coral); color: white;
+      padding: 13px 28px; border-radius: 9px;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: all .22s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary:hover {
+      background: var(--coral-light); transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(232,67,45,.32);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 13px 28px; border-radius: 9px;
+      font-size: 14px; font-weight: 600;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: all .22s; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-secondary:hover { border-color: var(--text); transform: translateY(-2px); }
+    .hero-illustration {
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeSlideRight .9s ease .3s both;
+    }
+
+    /* ── PROOF BAR ── */
+    .proof-bar { background: var(--navy); padding: 18px 0; overflow: hidden; }
+    .proof-track {
+      display: flex; gap: 72px;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    .proof-item {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.75); font-size: 13px; font-weight: 500; flex-shrink: 0;
+    }
+    .proof-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--sage);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── PROBLEM ── */
+    .problem {
+      background: var(--navy); padding: 130px var(--gutter);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: center;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--coral); margin-bottom: 20px;
+    }
+    .problem h2 { font-size: clamp(38px, 4vw, 58px); color: white; margin-bottom: 28px; }
+    .problem p { font-size: 17px; color: rgba(255,255,255,.6); line-height: 1.8; max-width: 460px; }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works { padding: 150px var(--gutter); background: var(--bg); }
+    .section-header { text-align: center; margin-bottom: 90px; }
+    .section-header h2 {
+      font-size: clamp(40px, 4.2vw, 66px); color: var(--text);
+      max-width: 580px; margin: 0 auto 18px;
+    }
+    .section-header p { font-size: 17px; color: var(--muted); max-width: 440px; margin: 0 auto; }
+
+    .steps {
+      max-width: 960px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 36px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute; left: 55px; top: 72px; bottom: 72px; width: 2px;
+      background: linear-gradient(to bottom, var(--coral) 0%, var(--sage) 100%);
+      opacity: .35;
+    }
+    .step {
+      display: grid; grid-template-columns: 112px 1fr; gap: 44px; align-items: start;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .step.visible { opacity: 1; transform: translateY(0); }
+    .step-num {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: white; border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px; font-weight: 700; color: var(--text);
+      position: relative; z-index: 2;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      margin: 0 auto; transition: all .3s;
+    }
+    .step.visible .step-num {
+      background: var(--coral); border-color: var(--coral); color: white;
+    }
+    .step-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px 44px;
+      transition: box-shadow .3s, transform .3s;
+      position: relative; overflow: hidden;
+    }
+    .step-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--coral), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .step-card:hover { box-shadow: 0 14px 44px rgba(0,0,0,.07); transform: translateY(-3px); }
+    .step-card:hover::after { opacity: 1; }
+    .step-card h3 { font-size: 28px; color: var(--text); margin-bottom: 6px; }
+    .step-sub { font-size: 16px; color: var(--text-mid); margin-bottom: 14px; font-weight: 400; }
+    .step-body { font-size: 14.5px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag {
+      background: var(--bg-warm); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 12px; font-weight: 500; color: var(--text-mid);
+    }
+    .step-illo { float: right; margin: 0 0 12px 24px; }
+
+    .step-cta-box {
+      margin-top: 72px; padding: 64px; text-align: center;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 22px; position: relative; overflow: hidden;
+    }
+    .step-cta-box::before {
+      content: '';
+      position: absolute; bottom: -100px; right: -100px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(232,67,45,.28), transparent 70%);
+      pointer-events: none;
+    }
+    .step-cta-box h3 { font-size: 38px; color: white; margin-bottom: 12px; }
+    .step-cta-box p  { color: rgba(255,255,255,.55); font-size: 15px; margin-bottom: 32px; }
+
+    /* ── COMPARISON ── */
+    .comparison { padding: 150px var(--gutter); background: var(--bg-warm); }
+    .comp-wrap { max-width: 980px; margin: 0 auto; }
+    .comp-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .comp-table th {
+      padding: 20px 26px; text-align: left;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+    }
+    .comp-table th:first-child { width: 34%; }
+    .th-flex { background: var(--coral); color: white; border-radius: 14px 0 0 0; }
+    .th-trad { background: white; color: var(--text); }
+    .th-free { background: white; color: var(--text); border-radius: 0 14px 0 0; }
+    .comp-table td { padding: 16px 26px; font-size: 13.5px; border-bottom: 1px solid var(--border); }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table td:nth-child(1) { font-weight: 600; color: var(--text-mid); }
+    .comp-table td:nth-child(2) { background: rgba(232,67,45,.04); font-weight: 600; color: var(--text); }
+    .comp-table td:nth-child(3), .comp-table td:nth-child(4) { background: white; }
+    .comp-table tbody tr:last-child td:nth-child(2) { border-radius: 0 0 0 14px; }
+    .comp-table tbody tr:last-child td:nth-child(4) { border-radius: 0 0 14px 0; }
+    .yes   { color: var(--sage);  font-weight: 700; }
+    .no    { color: #4F5666; font-weight: 600; }
+    .maybe { color: #6B7280; font-weight: 600; }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial { padding: 130px var(--gutter); background: var(--bg); text-align: center; }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px; line-height: .7;
+      color: var(--coral); opacity: .18;
+      margin-bottom: 28px; display: block;
+    }
+    .testimonial blockquote {
+      font-size: clamp(26px, 3.2vw, 46px); font-weight: 400; font-style: italic;
+      color: var(--text); max-width: 780px; margin: 0 auto 44px; line-height: 1.42;
+    }
+    .t-author { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .t-avatar {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600; color: white;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .t-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .t-author strong { display: block; font-size: 15px; font-weight: 700; }
+    .t-author span   { font-size: 13px; color: var(--muted); }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 150px var(--gutter); background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .pricing::before {
+      content: '';
+      position: absolute; top: -280px; left: 50%; transform: translateX(-50%);
+      width: 760px; height: 760px;
+      background: radial-gradient(circle, rgba(232,67,45,.1) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .pricing .section-label { color: var(--coral); }
+    .pricing .section-header h2 { color: white; }
+    .pricing .section-header p   { color: rgba(255,255,255,.45); }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px; max-width: 980px; margin: 0 auto;
+    }
+    .p-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
+      border-radius: 20px; padding: 40px 34px;
+      transition: transform .3s, border-color .3s, background .3s; position: relative;
+    }
+    .p-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.07); }
+    .p-card.hot { background: var(--coral); border-color: var(--coral); }
+    .p-card.hot:hover { background: var(--coral-light); border-color: var(--coral-light); }
+    .hot-badge {
+      display: inline-block; background: rgba(255,255,255,.2); color: white;
+      font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px; margin-bottom: 22px;
+    }
+    .p-tier { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.55); margin-bottom: 8px; }
+    .p-card.hot .p-tier { color: rgba(255,255,255,.8); }
+    .p-price { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 600; color: white; line-height: 1; margin-bottom: 4px; }
+    .p-from {
+      display: block; font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: .03em;
+      color: rgba(255,255,255,.5); margin-bottom: 4px;
+    }
+    .p-card.hot .p-from { color: rgba(255,255,255,.85); }
+    .p-period { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 16px; }
+    .p-card.hot .p-period { color: rgba(255,255,255,.7); }
+    .p-desc { font-size: 13.5px; color: rgba(255,255,255,.55); line-height: 1.65; margin-bottom: 28px; }
+    .p-card.hot .p-desc { color: rgba(255,255,255,.85); }
+    .p-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 34px; }
+    .p-feats li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,.6); }
+    .p-card.hot .p-feats li { color: rgba(255,255,255,.9); }
+    .f-dot {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;
+    }
+    .p-card.hot .f-dot { background: rgba(255,255,255,.25); }
+    .btn-p-white {
+      display: block; width: 100%; background: white; color: var(--coral);
+      padding: 13px; border-radius: 10px; font-size: 13.5px; font-weight: 700;
+      text-decoration: none; text-align: center; transition: box-shadow .2s, transform .2s;
+    }
+    .btn-p-white:hover { transform: translateY(-1px); box-shadow: 0 5px 18px rgba(0,0,0,.18); }
+    .btn-p-outline {
+      display: block; width: 100%; background: transparent; color: white;
+      padding: 13px; border-radius: 10px; font-size: 13.5px; font-weight: 700;
+      text-decoration: none; text-align: center;
+      border: 1.5px solid rgba(255,255,255,.18); transition: border-color .2s, background .2s;
+    }
+    .btn-p-outline:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.05); }
+    .scarcity {
+      text-align: center; margin-top: 44px; padding: 15px 28px;
+      background: rgba(240,160,48,.1); border: 1px solid rgba(240,160,48,.28);
+      border-radius: 12px; color: var(--amber); font-size: 13.5px; font-weight: 500;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+
+    /* ── AURELIA ── */
+    .aurelia {
+      padding: 150px var(--gutter); background: var(--bg);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+    }
+    .aurelia .section-label { color: var(--coral); }
+    .aurelia h2 { font-size: clamp(36px, 3.8vw, 56px); margin-bottom: 22px; }
+    .aurelia > div > p { font-size: 17px; color: var(--text-mid); line-height: 1.78; max-width: 460px; margin-bottom: 40px; }
+    .a-stats { display: flex; flex-direction: column; gap: 22px; margin-bottom: 40px; }
+    .a-stat  { display: flex; align-items: center; gap: 22px; }
+    .a-num { font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 600; color: var(--coral); min-width: 110px; line-height: 1; }
+    .a-desc { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
+    .aurelia-illo { display: flex; justify-content: center; }
+
+    /* ── CLOSE CTA ── */
+    .close-cta {
+      padding: 170px var(--gutter); text-align: center;
+      background: var(--navy); position: relative; overflow: hidden;
+    }
+    .close-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 110%, rgba(232,67,45,.18), transparent 60%);
+      pointer-events: none;
+    }
+    .close-cta h2 { font-size: clamp(46px, 5vw, 78px); color: white; max-width: 680px; margin: 0 auto 22px; position: relative; }
+    .close-cta > p { font-size: 17px; color: rgba(255,255,255,.55); margin-bottom: 50px; position: relative; }
+    .cc-btns { display: flex; gap: 14px; justify-content: center; position: relative; }
+    .btn-cc-primary {
+      background: var(--coral); color: white; padding: 16px 38px; border-radius: 10px;
+      font-size: 15px; font-weight: 700; text-decoration: none; transition: all .22s;
+    }
+    .btn-cc-primary:hover { background: var(--coral-light); transform: translateY(-2px); box-shadow: 0 9px 32px rgba(232,67,45,.38); }
+    .btn-cc-outline {
+      background: transparent; color: white; padding: 16px 38px; border-radius: 10px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,.22); transition: all .22s;
+    }
+    .btn-cc-outline:hover { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.05); }
+    .close-note { margin-top: 30px; font-size: 13px; color: rgba(255,255,255,.35); position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,.06);
+      padding: 52px 0;
+    }
+    .footer-inner {
+      padding: 0 var(--gutter);
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .f-logo { display: inline-flex; align-items: center; text-decoration: none; }
+    .f-logo img { height: 34px; width: auto; display: block; }
+    .f-tag { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 12px; }
+    .f-nav  { display: flex; gap: 30px; list-style: none; }
+    .f-nav a { text-decoration: none; color: rgba(255,255,255,.45); font-size: 13px; transition: color .2s; }
+    .f-nav a:hover { color: white; }
+    .f-copy { font-size: 12px; color: rgba(255,255,255,.28); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-in { opacity: 0; transition: opacity .8s ease; }
+    .fade-in.visible { opacity: 1; }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideRight {
+      from { opacity: 0; transform: translateX(28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 0; }
+      .nav-inner { padding: 0 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .btn-nav { padding: 9px 15px; font-size: 12px; white-space: nowrap; }
+      .nav-logo img { height: 26px; }
+      .btn-label-full { display: none; }
+      .btn-label-short { display: inline; }
+      .hero { grid-template-columns: 1fr; padding: 120px 28px 60px; gap: 48px; }
+      .problem { grid-template-columns: 1fr; padding: 80px 28px; }
+      .problem svg { display: none; }
+      .how-it-works { padding: 80px 28px; }
+      .step { grid-template-columns: 72px 1fr; gap: 20px; }
+      .steps::before { left: 35px; }
+      .step-card { padding: 28px 24px; }
+      .step-illo { display: none; }
+      .comparison { padding: 80px 24px; }
+      .comp-wrap { overflow-x: auto; }
+      .comp-table { min-width: 600px; }
+      .testimonial { padding: 80px 28px; }
+      .pricing { padding: 80px 28px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
+      .aurelia { grid-template-columns: 1fr; padding: 80px 28px; gap: 60px; }
+      .aurelia-illo { display: none; }
+      .close-cta { padding: 100px 28px; }
+      .cc-btns { flex-direction: column; align-items: center; }
+      footer { padding: 44px 0; }
+      .footer-inner { flex-direction: column; gap: 24px; padding: 0 28px; text-align: center; }
+      .f-nav { flex-wrap: wrap; justify-content: center; gap: 14px 22px; }
+    }
+
+    /* ── TRUSTED BY ── */
+    .trusted-by {
+      padding: 90px 0 96px;
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .trusted-by-header {
+      text-align: center;
+      padding: 0 var(--gutter);
+      margin-bottom: 52px;
+    }
+    .trusted-by-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--coral); margin-bottom: 16px;
+    }
+    .trusted-by h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 500; font-style: italic;
+      color: var(--text); margin-bottom: 12px; line-height: 1.18;
+    }
+    .trusted-by-sub {
+      font-size: 15.5px; color: var(--text-mid);
+      max-width: 520px; margin: 0 auto; line-height: 1.72;
+    }
+    .logo-marquee-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-marquee-wrap::before,
+    .logo-marquee-wrap::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2;
+      pointer-events: none;
+    }
+    .logo-marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+    .logo-marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
+    .logo-track {
+      display: flex; align-items: stretch;
+      gap: 22px; padding: 14px 11px;
+      animation: logo-scroll 44s linear infinite;
+      width: max-content;
+    }
+    .logo-track:hover { animation-play-state: paused; }
+    .logo-item {
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      width: 196px; height: 96px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 2px 14px rgba(13,22,36,.05);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .logo-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(13,22,36,.10);
+      border-color: rgba(13,22,36,.14);
+    }
+    .logo-item img {
+      max-height: 52px; max-width: 132px;
+      object-fit: contain; display: block;
+    }
+    /* logos whose artwork sits small in the canvas — scale up */
+    .logo-item.logo-lg img {
+      max-height: 80px; max-width: 176px;
+    }
+    /* dark card for the all-white logo so it stays visible */
+    .logo-item.logo-dark {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .logo-item.logo-dark:hover {
+      border-color: var(--navy-mid);
+    }
+    @keyframes logo-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 900px) {
+      .trusted-by { padding: 60px 0 66px; }
+      .trusted-by-header { padding: 0 28px; margin-bottom: 40px; }
+      .logo-item { width: 152px; height: 80px; }
+      .logo-item img { max-height: 42px; max-width: 104px; }
+      .logo-track { gap: 16px; }
+      .logo-marquee-wrap::before,
+      .logo-marquee-wrap::after { width: 64px; }
+    }
+
+    /* ── QUALIFY MODAL ── */
+    .qf-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(13,22,36,.6);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .qf-overlay.open { opacity: 1; pointer-events: auto; }
+    .qf-modal {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      width: 100%; max-width: 640px; max-height: 90vh;
+      overflow-y: auto;
+      padding: 44px 48px;
+      position: relative;
+      box-shadow: 0 30px 90px rgba(13,22,36,.45);
+      transform: translateY(18px) scale(.985);
+      transition: transform .3s ease;
+    }
+    .qf-overlay.open .qf-modal { transform: none; }
+    .qf-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-mid);
+      font-size: 18px; line-height: 1; transition: all .2s;
+    }
+    .qf-close:hover { background: var(--bg-warm); color: var(--text); }
+    .qf-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--coral); margin-bottom: 12px;
+    }
+    .qf-modal h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 600; font-style: italic;
+      color: var(--text); margin-bottom: 8px; line-height: 1.1;
+    }
+    .qf-intro { font-size: 14px; color: var(--muted); margin-bottom: 30px; line-height: 1.6; }
+    .qf-q { display: none; }
+    .qf-q.active { display: block; animation: qfStepIn .28s ease; }
+    @keyframes qfStepIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .qf-progress { height: 5px; background: var(--border); border-radius: 100px; overflow: hidden; margin-bottom: 28px; }
+    .qf-progress-bar { height: 100%; width: 0; background: var(--coral); border-radius: 100px; transition: width .35s ease; }
+    .qf-label {
+      display: block; font-size: 14px; font-weight: 600;
+      color: var(--text); margin-bottom: 11px;
+    }
+    .qf-label .req { color: var(--coral); }
+    .qf-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qf-options input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .qf-options label {
+      padding: 9px 16px; border: 1px solid var(--border);
+      border-radius: 100px; cursor: pointer;
+      font-size: 13.5px; font-weight: 500; color: var(--text-mid);
+      background: var(--white); transition: all .18s; user-select: none;
+    }
+    .qf-options label:hover { border-color: var(--muted); }
+    .qf-options input:checked + label {
+      background: var(--coral); border-color: var(--coral);
+      color: #fff; font-weight: 600;
+    }
+    .qf-options input:focus-visible + label { outline: 2px solid var(--coral); outline-offset: 2px; }
+    .qf-input, .qf-textarea {
+      width: 100%; padding: 12px 15px;
+      border: 1px solid var(--border); border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+      color: var(--text); background: var(--white);
+      transition: border-color .2s;
+    }
+    .qf-input:focus, .qf-textarea:focus { outline: none; border-color: var(--coral); }
+    .qf-textarea { resize: vertical; min-height: 78px; }
+    .qf-err { color: var(--coral); font-size: 12.5px; font-weight: 600; margin-top: 12px; min-height: 16px; }
+    .qf-nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 26px; }
+    .qf-back {
+      background: transparent; border: none; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-mid); padding: 8px 2px; transition: color .2s;
+    }
+    .qf-back:hover { color: var(--text); }
+    .qf-back[disabled] { visibility: hidden; }
+    .qf-step-count { font-size: 12px; font-weight: 600; color: var(--muted); }
+    .qf-next {
+      background: var(--coral); color: #fff; border: none;
+      padding: 13px 30px; border-radius: 11px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .qf-next:hover { background: var(--coral-light); transform: translateY(-1px); box-shadow: 0 7px 22px rgba(232,67,45,.3); }
+    .qf-foot { text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px; }
+    body.qf-locked { overflow: hidden; }
+    @media (max-width: 640px) {
+      .qf-modal { padding: 36px 24px; border-radius: 20px; }
+      .qf-modal h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="FlexsibleLogo-hi.png" alt="Flexsible"></a>
+    <ul class="nav-links">
+      <li><a href="#how">What We Do</a></li>
+      <li><a href="#comparison">Results</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="btn-nav"><span class="btn-label-full">Get Your Engineer →</span><span class="btn-label-short">Get Engineer →</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      On-demand AI engineering
+    </div>
+    <h1>Ship <em>AI products</em><br>faster.</h1>
+    <p class="hero-sub">On-demand senior AI engineers for your startup. No hiring delays, no agency bloat — just working code.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Get Your Engineer →</a>
+    </div>
+  </div>
+
+  <!-- ── HERO ILLUSTRATION ── -->
+  <div class="hero-illustration">
+    <svg width="540" height="500" viewBox="0 0 540 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="shadow-sm" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(13,22,36,0.10)"/>
+        </filter>
+        <filter id="shadow-md" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="rgba(13,22,36,0.12)"/>
+        </filter>
+        <radialGradient id="bg-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#F3F1EA"/>
+          <stop offset="100%" stop-color="#EAE8DF"/>
+        </radialGradient>
+        <linearGradient id="rocket-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1A2B44"/>
+          <stop offset="100%" stop-color="#0D1624"/>
+        </linearGradient>
+        <linearGradient id="rocket-red" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#FF6B52"/>
+          <stop offset="100%" stop-color="#E8432D"/>
+        </linearGradient>
+        <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#F0A030"/>
+          <stop offset="100%" stop-color="#E8432D" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Background plate -->
+      <circle cx="270" cy="252" r="205" fill="url(#bg-grad)"/>
+
+      <!-- Orbit rings -->
+      <ellipse cx="270" cy="252" rx="222" ry="88" stroke="#D8D5CC" stroke-width="1.5" fill="none" stroke-dasharray="8 7"/>
+      <ellipse cx="270" cy="252" rx="172" ry="65" stroke="#D8D5CC" stroke-width="1" fill="none"
+               transform="rotate(-22 270 252)" stroke-dasharray="5 9"/>
+
+      <!-- ── Rocket ── -->
+      <g transform="translate(232,72)" filter="url(#shadow-md)">
+        <!-- Body -->
+        <path d="M38 0 C38 0 72 60 72 130 L38 108 L4 130 C4 130 4 60 38 0Z" fill="url(#rocket-grad)"/>
+        <!-- Red stripe panel -->
+        <path d="M38 0 C38 0 72 60 72 130 L38 108Z" fill="url(#rocket-red)" opacity=".85"/>
+        <!-- Nose cone highlight -->
+        <path d="M38 0 C36 12 34 22 33 35 C35 32 38 26 38 0Z" fill="rgba(255,255,255,.18)"/>
+        <!-- Window -->
+        <circle cx="38" cy="52" r="14" fill="#1E3558"/>
+        <circle cx="38" cy="52" r="11" fill="#244070"/>
+        <circle cx="38" cy="52" r="8"  fill="#2A4F8A"/>
+        <circle cx="34" cy="48" r="3.5" fill="rgba(255,255,255,.38)"/>
+        <!-- Fins -->
+        <path d="M4 130 L-18 158 L38 136Z" fill="#1A2B44"/>
+        <path d="M72 130 L90 158 L38 136Z" fill="#1A2B44"/>
+        <!-- Fin highlights -->
+        <path d="M4 130 L-8 148 L16 136Z" fill="rgba(255,255,255,.06)"/>
+        <path d="M72 130 L82 148 L60 136Z" fill="rgba(255,255,255,.06)"/>
+        <!-- Flame -->
+        <path d="M22 138 Q38 180 54 138" fill="url(#flame)" opacity=".95"/>
+        <path d="M27 138 Q38 168 49 138" fill="url(#flame)" opacity=".7"/>
+        <path d="M33 138 Q38 156 43 138" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Flame animated glow -->
+        <ellipse cx="38" cy="140" rx="10" ry="6" fill="#F0A030" opacity=".35">
+          <animate attributeName="ry" values="6;9;6" dur="1.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".35;.6;.35" dur="1.2s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+
+      <!-- ── Engineer card — right ── -->
+      <g transform="translate(380,148)" filter="url(#shadow-sm)">
+        <rect width="136" height="82" rx="16" fill="white"/>
+        <!-- Avatar -->
+        <circle cx="30" cy="32" r="16" fill="#0D1624"/>
+        <circle cx="30" cy="27" r="9"  fill="#1A2B44"/>
+        <path   d="M16 46 Q30 58 44 46" fill="#0D1624"/>
+        <!-- Name / role -->
+        <rect x="54" y="18" width="64" height="6" rx="3" fill="#E3E0D6"/>
+        <rect x="54" y="29" width="46" height="5" rx="2.5" fill="#F3F1EA"/>
+        <!-- Status badge -->
+        <rect x="54" y="44" width="58" height="18" rx="9" fill="rgba(107,175,120,.12)"/>
+        <circle cx="64" cy="53" r="4" fill="#6BAF78"/>
+        <rect x="72" y="50" width="34" height="5" rx="2.5" fill="#6BAF78" opacity=".6"/>
+        <!-- Slack logo pill bottom-right -->
+        <g transform="translate(96,58)">
+          <rect width="26" height="18" rx="5" fill="#4A154B"/>
+          <use href="#logo-slack" x="4" y="2" width="18" height="14"/>
+        </g>
+        <!-- Ping ring -->
+        <circle cx="30" cy="32" r="22" fill="none" stroke="#6BAF78" stroke-width="1.5" opacity=".3">
+          <animate attributeName="r" values="18;28;18" dur="2.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".4;0;.4" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- ── Engineer card — left ── -->
+      <g transform="translate(24,198)" filter="url(#shadow-sm)">
+        <rect width="136" height="82" rx="16" fill="white"/>
+        <!-- Avatar -->
+        <circle cx="30" cy="32" r="16" fill="#E8432D" opacity=".9"/>
+        <circle cx="30" cy="27" r="9"  fill="#E8432D"/>
+        <path   d="M16 46 Q30 58 44 46" fill="#E8432D" opacity=".75"/>
+        <!-- Name / role -->
+        <rect x="54" y="18" width="64" height="6" rx="3" fill="#E3E0D6"/>
+        <rect x="54" y="29" width="46" height="5" rx="2.5" fill="#F3F1EA"/>
+        <!-- GitHub logo pill -->
+        <rect x="54" y="44" width="28" height="20" rx="6" fill="#24292F"/>
+        <use href="#logo-github" x="57" y="46" width="22" height="16"/>
+        <!-- Active dot -->
+        <circle cx="122" cy="12" r="7" fill="rgba(107,175,120,.15)"/>
+        <circle cx="122" cy="12" r="4" fill="#6BAF78"/>
+      </g>
+
+      <!-- ── Code commit card — bottom ── -->
+      <g transform="translate(284,352)" filter="url(#shadow-sm)">
+        <rect width="168" height="62" rx="14" fill="white"/>
+        <!-- Terminal icon -->
+        <rect x="12" y="12" width="32" height="32" rx="9" fill="#0D1624"/>
+        <rect x="16" y="22" width="6"  height="3.5" rx="1.75" fill="#E8432D" opacity=".9"/>
+        <rect x="24" y="22" width="14" height="3.5" rx="1.75" fill="rgba(255,255,255,.4)"/>
+        <rect x="16" y="29" width="18" height="3.5" rx="1.75" fill="rgba(255,255,255,.25)"/>
+        <rect x="16" y="36" width="10" height="3.5" rx="1.75" fill="#6BAF78" opacity=".8"/>
+        <!-- Text -->
+        <rect x="56" y="16" width="96" height="6"   rx="3" fill="#E3E0D6"/>
+        <rect x="56" y="27" width="72" height="5"   rx="2.5" fill="#F3F1EA"/>
+        <rect x="56" y="37" width="56" height="5"   rx="2.5" fill="#F3F1EA"/>
+        <!-- Git badge -->
+        <rect x="118" y="42" width="38" height="14" rx="7" fill="rgba(94,106,210,.12)"/>
+        <rect x="124" y="46" width="26" height="5"  rx="2.5" fill="#5E6AD2" opacity=".6"/>
+      </g>
+
+      <!-- ── Tool logo pills (floating) ── -->
+      <!-- Slack pill -->
+      <g transform="translate(44,96)" filter="url(#shadow-sm)">
+        <rect width="102" height="36" rx="18" fill="white"/>
+        <use href="#logo-slack" x="8" y="4" width="28" height="28"/>
+        <rect x="44" y="11" width="48" height="6" rx="3" fill="#E3E0D6"/>
+        <rect x="44" y="21" width="34" height="5" rx="2.5" fill="#F3F1EA"/>
+      </g>
+      <!-- GitHub pill -->
+      <g transform="translate(392,316)" filter="url(#shadow-sm)">
+        <rect width="110" height="36" rx="18" fill="white"/>
+        <use href="#logo-github" x="8" y="4" width="28" height="28"/>
+        <rect x="44" y="11" width="52" height="6" rx="3" fill="#E3E0D6"/>
+        <rect x="44" y="21" width="38" height="5" rx="2.5" fill="#F3F1EA"/>
+      </g>
+      <!-- Linear pill -->
+      <g transform="translate(56,332)" filter="url(#shadow-sm)">
+        <rect width="108" height="36" rx="18" fill="white"/>
+        <use href="#logo-linear" x="8" y="4" width="28" height="28"/>
+        <rect x="44" y="11" width="48" height="6" rx="3" fill="#E3E0D6"/>
+        <rect x="44" y="21" width="36" height="5" rx="2.5" fill="#F3F1EA"/>
+      </g>
+
+      <!-- Decorative sparkles -->
+      <circle cx="452" cy="218" r="4" fill="#F0A030"/>
+      <circle cx="452" cy="218" r="7" fill="none" stroke="#F0A030" stroke-width="1" opacity=".4"/>
+      <circle cx="68"  cy="294" r="3" fill="#E8432D" opacity=".45"/>
+      <circle cx="380" cy="92"  r="2.5" fill="#6BAF78"/>
+      <circle cx="168" cy="428" r="2" fill="#5E6AD2" opacity=".5"/>
+
+      <!-- Speed lines -->
+      <line x1="196" y1="420" x2="344" y2="420" stroke="#D8D5CC" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="212" y1="432" x2="328" y2="432" stroke="#E8432D" stroke-width="2.5" stroke-linecap="round" opacity=".3"/>
+      <line x1="228" y1="442" x2="312" y2="442" stroke="#E8432D" stroke-width="1.5" stroke-linecap="round" opacity=".15"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── PROOF BAR ── -->
+<div class="proof-bar">
+  <div class="proof-track">
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Top 3.5% Vetted Global Talent</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Working code in week one</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Cancel or pause anytime</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>HIPAA-compliant builds</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Senior AI engineers only</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Top 3.5% Vetted Global Talent</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Working code in week one</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Cancel or pause anytime</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>HIPAA-compliant builds</div>
+    <div class="proof-item"><div class="proof-check"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Senior AI engineers only</div>
+  </div>
+</div>
+
+<!-- ── PROBLEM ── -->
+<section class="problem">
+  <div class="fade-up">
+    <div class="section-label">The Problem</div>
+    <h2>Your prototype needs to become a product.</h2>
+    <p>You built it in Cursor, Lovable, or Bolt. It works — until it doesn't. Every new feature creates three new bugs. Users arrive and things break. You got 70% there. You need someone to finish it.</p>
+  </div>
+  <div class="fade-in">
+    <!-- PROBLEM ILLUSTRATION: broken dashboard -->
+    <svg width="460" height="380" viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="card-shadow">
+          <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="rgba(0,0,0,0.18)"/>
+        </filter>
+      </defs>
+
+      <!-- Browser shell -->
+      <rect x="16" y="16" width="428" height="308" rx="18" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1.5"/>
+      <!-- Chrome bar -->
+      <rect x="16" y="16" width="428" height="40" rx="18" fill="rgba(255,255,255,.08)"/>
+      <rect x="16" y="40" width="428" height="16" fill="rgba(255,255,255,.08)"/>
+      <!-- Traffic lights -->
+      <circle cx="46" cy="36" r="5.5" fill="#FF5F57"/>
+      <circle cx="63" cy="36" r="5.5" fill="#FEBC2E"/>
+      <circle cx="80" cy="36" r="5.5" fill="#28C840"/>
+      <!-- URL bar -->
+      <rect x="114" y="27" width="200" height="18" rx="9" fill="rgba(255,255,255,.08)"/>
+      <rect x="121" y="32" width="60"  height="8"  rx="4" fill="rgba(255,255,255,.2)"/>
+      <!-- Reload icon -->
+      <path d="M302 32 A4 4 0 1 1 298 36" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Bookmark -->
+      <rect x="368" y="26" width="52" height="20" rx="5" fill="rgba(255,255,255,.06)"/>
+      <rect x="374" y="30" width="24" height="5" rx="2.5" fill="rgba(255,255,255,.15)"/>
+
+      <!-- Left sidebar -->
+      <rect x="16" y="56" width="68" height="268" fill="rgba(255,255,255,.03)"/>
+      <rect x="28" y="72" width="44" height="8" rx="4" fill="rgba(255,255,255,.08)"/>
+      <rect x="28" y="88" width="36" height="6" rx="3" fill="rgba(255,255,255,.05)"/>
+      <rect x="28" y="102" width="40" height="6" rx="3" fill="rgba(255,255,255,.05)"/>
+      <rect x="28" y="116" width="32" height="6" rx="3" fill="rgba(255,255,255,.05)"/>
+      <!-- Sidebar active item -->
+      <rect x="24" y="133" width="52" height="28" rx="6" fill="rgba(232,67,45,.2)" stroke="rgba(232,67,45,.3)" stroke-width="1"/>
+      <rect x="30" y="140" width="32" height="5" rx="2.5" fill="#E8432D" opacity=".8"/>
+      <rect x="30" y="149" width="24" height="4" rx="2" fill="rgba(232,67,45,.5)"/>
+
+      <!-- Main content area - 2 broken cards side by side -->
+      <!-- Left broken card -->
+      <rect x="96" y="68" width="164" height="120" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(232,67,45,.35)" stroke-width="1.5" stroke-dasharray="7 5"/>
+      <!-- Lightning/error inside -->
+      <path d="M164 88 L152 110 L162 110 L150 132" stroke="#E8432D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+      <!-- Error count badge -->
+      <circle cx="242" cy="72" r="18" fill="rgba(232,67,45,.18)" filter="url(#card-shadow)"/>
+      <circle cx="242" cy="72" r="14" fill="rgba(232,67,45,.25)" stroke="rgba(232,67,45,.6)" stroke-width="1.5"/>
+      <text x="237.5" y="70" font-size="11" fill="#FF6B52" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">3</text>
+      <text x="231"   y="81" font-size="8"  fill="rgba(232,67,45,.8)" font-family="Plus Jakarta Sans, sans-serif" font-weight="700">bugs</text>
+      <!-- Small error lines -->
+      <rect x="102" y="148" width="80" height="5" rx="2.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="102" y="157" width="56" height="5" rx="2.5" fill="rgba(255,255,255,.04)"/>
+      <rect x="102" y="166" width="68" height="5" rx="2.5" fill="rgba(255,255,255,.04)"/>
+
+      <!-- Right broken card -->
+      <rect x="272" y="68" width="160" height="120" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(240,160,48,.3)" stroke-width="1.5" stroke-dasharray="7 5"/>
+      <!-- Warning triangle -->
+      <path d="M350 86 L367 116 L333 116 Z" stroke="#F0A030" stroke-width="1.8" fill="rgba(240,160,48,.08)" stroke-linejoin="round"/>
+      <line x1="350" y1="96" x2="350" y2="108" stroke="#F0A030" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="350" cy="113" r="2" fill="#F0A030"/>
+      <!-- Loading spinner (broken) -->
+      <circle cx="350" cy="150" r="12" stroke="rgba(255,255,255,.08)" stroke-width="3" fill="none"/>
+      <path d="M350 138 A12 12 0 0 1 362 150" stroke="#F0A030" stroke-width="3" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 350 150" to="360 350 150" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+      <!-- Lines -->
+      <rect x="278" y="148" width="72" height="5" rx="2.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="278" y="157" width="52" height="5" rx="2.5" fill="rgba(255,255,255,.04)"/>
+      <rect x="278" y="166" width="64" height="5" rx="2.5" fill="rgba(255,255,255,.04)"/>
+
+      <!-- Progress bar: 70% -->
+      <rect x="96"  y="204" width="336" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+      <rect x="96"  y="204" width="235" height="10" rx="5" fill="rgba(232,67,45,.6)"/>
+      <text x="340" y="217" font-size="11" fill="rgba(255,255,255,.4)" font-family="Plus Jakarta Sans, sans-serif" font-weight="700">70%</text>
+
+      <!-- Console / error log -->
+      <rect x="96"  y="228" width="336" height="80" rx="10" fill="rgba(0,0,0,.3)"/>
+      <rect x="104" y="236" width="10"  height="10" rx="3" fill="#E8432D" opacity=".8"/>
+      <rect x="120" y="238" width="140" height="5" rx="2.5" fill="rgba(232,67,45,.55)"/>
+      <rect x="104" y="252" width="10"  height="10" rx="3" fill="#F0A030" opacity=".8"/>
+      <rect x="120" y="254" width="100" height="5" rx="2.5" fill="rgba(240,160,48,.5)"/>
+      <rect x="104" y="268" width="10"  height="10" rx="3" fill="#E8432D" opacity=".7"/>
+      <rect x="120" y="270" width="160" height="5" rx="2.5" fill="rgba(232,67,45,.45)"/>
+      <rect x="104" y="284" width="6"   height="10" rx="3" fill="rgba(255,255,255,.6)">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+      </rect>
+
+      <!-- "Missing piece" puzzle card -->
+      <rect x="96" y="316" width="160" height="36" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.07)" stroke-width="1" stroke-dasharray="5 4"/>
+      <text x="128" y="338" font-size="12" fill="rgba(255,255,255,.2)" font-family="Plus Jakarta Sans, sans-serif">missing piece…</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ── TRUSTED BY ── -->
+<section class="trusted-by">
+  <div class="trusted-by-header">
+    <p class="trusted-by-eyebrow">Our Track Record</p>
+    <h2>Trusted by builders, backed by enterprises.</h2>
+    <p class="trusted-by-sub">We've delivered products for early-stage founders, universities, and Fortune 500 companies like Northrop Grumman.</p>
+  </div>
+  <div class="logo-marquee-wrap">
+    <div class="logo-track">
+      <div class="logo-item logo-lg"><img src="Northgrumman.jpeg" alt="Northrop Grumman"></div>
+      <div class="logo-item"><img src="The_Blackstone_Group_logo_(2).svg.png" alt="Blackstone"></div>
+      <div class="logo-item"><img src="Official_USF_Bulls_Athletic_Logo.png" alt="University of South Florida"></div>
+      <div class="logo-item"><img src="ucf-clean.png" alt="UCF"></div>
+      <div class="logo-item"><img src="Isleepbetter+logo+PNGoUT.webp" alt="iSleepBetter"></div>
+      <div class="logo-item"><img src="Shelter-Zoom.avif" alt="ShelterZoom"></div>
+      <div class="logo-item"><img src="mxd.png" alt="MXD"></div>
+      <div class="logo-item logo-lg"><img src="FortraSearch_Simba.png" alt="Fortra"></div>
+      <div class="logo-item"><img src="2424300.png" alt="StatCare Pulmonary & Sleep"></div>
+      <div class="logo-item logo-dark"><img src="Horizontal+Logo+All+White.png" alt="4AIR"></div>
+      <div class="logo-item logo-lg"><img src="Northgrumman.jpeg" alt="Northrop Grumman"></div>
+      <div class="logo-item"><img src="The_Blackstone_Group_logo_(2).svg.png" alt="Blackstone"></div>
+      <div class="logo-item"><img src="Official_USF_Bulls_Athletic_Logo.png" alt="University of South Florida"></div>
+      <div class="logo-item"><img src="ucf-clean.png" alt="UCF"></div>
+      <div class="logo-item"><img src="Isleepbetter+logo+PNGoUT.webp" alt="iSleepBetter"></div>
+      <div class="logo-item"><img src="Shelter-Zoom.avif" alt="ShelterZoom"></div>
+      <div class="logo-item"><img src="mxd.png" alt="MXD"></div>
+      <div class="logo-item logo-lg"><img src="FortraSearch_Simba.png" alt="Fortra"></div>
+      <div class="logo-item"><img src="2424300.png" alt="StatCare Pulmonary & Sleep"></div>
+      <div class="logo-item logo-dark"><img src="Horizontal+Logo+All+White.png" alt="4AIR"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-it-works" id="how">
+  <div class="section-header fade-up">
+    <div class="section-label">How It Works</div>
+    <h2>No ramp-up.<br>Shipping from day one.</h2>
+    <p>Four steps from stuck prototype to shipping product.</p>
+  </div>
+
+  <div class="steps">
+
+    <!-- STEP 01 -->
+    <div class="step">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="step-num">01</div>
+      </div>
+      <div class="step-card">
+        <!-- Video call illustration -->
+        <svg class="step-illo" width="168" height="128" viewBox="0 0 168 128" fill="none">
+          <defs>
+            <clipPath id="clip-call">
+              <rect width="168" height="128" rx="14"/>
+            </clipPath>
+          </defs>
+          <!-- Main window bg -->
+          <rect width="168" height="128" rx="14" fill="#0D1624"/>
+          <!-- Chrome bar -->
+          <rect width="168" height="22" rx="14" fill="#1A2B44"/>
+          <rect width="168" height="8" y="14" fill="#1A2B44"/>
+          <circle cx="12" cy="11" r="4" fill="#FF5F57" opacity=".8"/>
+          <circle cx="24" cy="11" r="4" fill="#FEBC2E" opacity=".8"/>
+          <circle cx="36" cy="11" r="4" fill="#28C840" opacity=".8"/>
+          <rect x="52" y="7" width="64" height="8" rx="4" fill="rgba(255,255,255,.08)"/>
+          <!-- Video tile 1 (you) -->
+          <rect x="8"  y="28" width="72" height="56" rx="10" fill="#1E3558"/>
+          <circle cx="44" cy="46" r="12" fill="#2A4F8A"/>
+          <circle cx="44" cy="42" r="7"  fill="#3A6FAA"/>
+          <path d="M32 60 Q44 70 56 60" fill="#2A4F8A"/>
+          <rect x="10" y="76" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.15)"/>
+          <!-- Video tile 2 (engineer) -->
+          <rect x="88" y="28" width="72" height="56" rx="10" fill="#1A2B44"/>
+          <circle cx="124" cy="46" r="12" fill="#E8432D" opacity=".85"/>
+          <circle cx="124" cy="42" r="7"  fill="#E8432D"/>
+          <path d="M112 60 Q124 70 136 60" fill="#E8432D" opacity=".7"/>
+          <rect x="90" y="76" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.15)"/>
+          <!-- Live indicator -->
+          <rect x="88" y="30" width="34" height="14" rx="7" fill="rgba(232,67,45,.85)"/>
+          <circle cx="96" cy="37" r="3" fill="white"/>
+          <rect x="102" y="34" width="14" height="5" rx="2.5" fill="white" opacity=".9"/>
+          <!-- Timer -->
+          <rect x="56" y="90" width="56" height="16" rx="8" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <text x="68" y="101" font-size="9" fill="rgba(255,255,255,.6)" font-family="Plus Jakarta Sans, sans-serif" font-weight="700">30:00</text>
+          <!-- Controls -->
+          <rect x="8" y="92" width="36" height="28" rx="10" fill="rgba(255,255,255,.04)"/>
+          <circle cx="18" cy="106" r="6" fill="rgba(255,255,255,.12)"/>
+          <circle cx="34" cy="106" r="6" fill="rgba(232,67,45,.8)"/>
+          <rect x="120" y="92" width="40" height="28" rx="10" fill="rgba(255,255,255,.04)"/>
+          <circle cx="130" cy="106" r="6" fill="rgba(255,255,255,.12)"/>
+          <circle cx="150" cy="106" r="6" fill="rgba(107,175,120,.8)"/>
+        </svg>
+        <h3>You tell us what to build.</h3>
+        <p class="step-sub">A 30-minute call. That's it.</p>
+        <p class="step-body">No lengthy briefs. No RFPs. Tell us your stack, your goal, and what's blocking you. We match you with an engineer that day.</p>
+        <div class="tags">
+          <span class="tag">30-min onboarding call</span>
+          <span class="tag">Matched same day</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 02 -->
+    <div class="step">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="step-num">02</div>
+      </div>
+      <div class="step-card">
+        <!-- Tools hub illustration with REAL logos -->
+        <svg class="step-illo" width="196" height="148" viewBox="0 0 196 148" fill="none">
+          <defs>
+            <filter id="logo-glow">
+              <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,.1)"/>
+            </filter>
+          </defs>
+
+          <!-- Central engineer hub -->
+          <circle cx="98" cy="74" r="26" fill="#0D1624" filter="url(#logo-glow)"/>
+          <circle cx="98" cy="74" r="20" fill="#1A2B44"/>
+          <circle cx="98" cy="70" r="10" fill="#244070"/>
+          <path d="M84 86 Q98 96 112 86" fill="#1A2B44"/>
+          <!-- "FE" initials -->
+          <text x="91" y="78" font-size="9" fill="rgba(255,255,255,.7)" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">FE</text>
+          <!-- Outer glow ring -->
+          <circle cx="98" cy="74" r="30" fill="none" stroke="#E8432D" stroke-width="1.5" stroke-dasharray="5 4" opacity=".35"/>
+
+          <!-- SLACK logo (top-left) -->
+          <g transform="translate(8,8)" filter="url(#logo-glow)">
+            <rect width="48" height="48" rx="12" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+            <use href="#logo-slack" x="5" y="5" width="38" height="38"/>
+          </g>
+          <!-- Slack label -->
+          <text x="18" y="66" font-size="9" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Slack</text>
+
+          <!-- GITHUB logo (top-right) -->
+          <g transform="translate(140,8)" filter="url(#logo-glow)">
+            <rect width="48" height="48" rx="12" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+            <use href="#logo-github" x="5" y="5" width="38" height="38"/>
+          </g>
+          <text x="149" y="66" font-size="9" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">GitHub</text>
+
+          <!-- LINEAR logo (bottom-left) -->
+          <g transform="translate(8,92)" filter="url(#logo-glow)">
+            <rect width="48" height="48" rx="12" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+            <use href="#logo-linear" x="5" y="5" width="38" height="38"/>
+          </g>
+          <text x="17" y="150" font-size="9" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Linear</text>
+
+          <!-- JIRA logo (bottom-right) -->
+          <g transform="translate(140,92)" filter="url(#logo-glow)">
+            <rect width="48" height="48" rx="12" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+            <use href="#logo-jira" x="5" y="5" width="38" height="38"/>
+          </g>
+          <text x="152" y="150" font-size="9" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Jira</text>
+
+          <!-- Connection lines (dashed, animated dots) -->
+          <!-- Slack → center -->
+          <line x1="56" y1="32" x2="72" y2="58" stroke="#E3E0D6" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <circle r="3" fill="#E8432D" opacity=".7">
+            <animateMotion dur="2s" repeatCount="indefinite" path="M56,32 L72,58"/>
+          </circle>
+          <!-- GitHub → center -->
+          <line x1="140" y1="32" x2="124" y2="58" stroke="#E3E0D6" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <circle r="3" fill="#24292F" opacity=".5">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M140,32 L124,58"/>
+          </circle>
+          <!-- Linear → center -->
+          <line x1="56" y1="116" x2="72" y2="90" stroke="#E3E0D6" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <circle r="3" fill="#5E6AD2" opacity=".6">
+            <animateMotion dur="1.8s" repeatCount="indefinite" path="M56,116 L72,90"/>
+          </circle>
+          <!-- Jira → center -->
+          <line x1="140" y1="116" x2="124" y2="90" stroke="#E3E0D6" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <circle r="3" fill="#0052CC" opacity=".5">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M140,116 L124,90"/>
+          </circle>
+        </svg>
+        <h3>They're in your tools by Monday.</h3>
+        <p class="step-sub">Slack. Repo. Standups. Done.</p>
+        <p class="step-body">Your engineer joins your Slack, gets access to your repo, and shows up to your standup. No second account. No separate project board. Just a new team member who already knows how to ship.</p>
+        <div class="tags">
+          <span class="tag">Slack</span>
+          <span class="tag">GitHub / GitLab</span>
+          <span class="tag">Linear / Jira</span>
+          <span class="tag">Your CI/CD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 03 -->
+    <div class="step">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="step-num">03</div>
+      </div>
+      <div class="step-card">
+        <!-- VS Code-style editor -->
+        <svg class="step-illo" width="188" height="144" viewBox="0 0 188 144" fill="none">
+          <!-- Editor shell -->
+          <rect width="188" height="144" rx="12" fill="#1E1E2E"/>
+          <!-- Title bar -->
+          <rect width="188" height="20" rx="12" fill="#181825"/>
+          <rect width="188" height="8" y="12" fill="#181825"/>
+          <circle cx="12" cy="10" r="4" fill="#FF5F57" opacity=".8"/>
+          <circle cx="24" cy="10" r="4" fill="#FEBC2E" opacity=".8"/>
+          <circle cx="36" cy="10" r="4" fill="#28C840" opacity=".8"/>
+          <!-- Tab bar -->
+          <rect x="48" y="3" width="72" height="14" rx="5" fill="#1E1E2E"/>
+          <rect x="52" y="6" width="10" height="8" rx="2" fill="#E8432D" opacity=".7"/>
+          <rect x="66" y="7" width="36" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+          <!-- File tree (left panel) -->
+          <rect x="0" y="20" width="44" height="124" fill="#181825"/>
+          <rect x="6"  y="28" width="6"  height="6" rx="1" fill="rgba(255,255,255,.12)"/>
+          <rect x="16" y="28" width="22" height="5" rx="2.5" fill="rgba(255,255,255,.15)"/>
+          <rect x="6"  y="40" width="4"  height="5" rx="1" fill="rgba(255,255,255,.08)"/>
+          <rect x="14" y="40" width="24" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="14" y="50" width="18" height="4" rx="2" fill="rgba(107,175,120,.5)"/>
+          <rect x="14" y="60" width="22" height="4" rx="2" fill="rgba(255,255,255,.08)"/>
+          <rect x="14" y="70" width="20" height="4" rx="2" fill="rgba(232,67,45,.5)"/>
+          <rect x="14" y="80" width="16" height="4" rx="2" fill="rgba(255,255,255,.08)"/>
+          <!-- Separator -->
+          <line x1="44" y1="20" x2="44" y2="144" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+
+          <!-- Code area - git diff view -->
+          <!-- Line numbers -->
+          <rect x="46" y="24" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="34" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="44" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="54" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="64" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="74" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="84" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="94" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="104" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <rect x="46" y="114" width="14" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+          <!-- REMOVED line (red) -->
+          <rect x="62" y="24" width="120" height="9" rx="0" fill="rgba(232,67,45,.15)"/>
+          <rect x="64" y="26" width="6"   height="5" rx="2" fill="#E8432D" opacity=".7"/>
+          <rect x="74" y="27" width="70"  height="5" rx="2" fill="rgba(255,255,255,.25)"/>
+          <!-- REMOVED line 2 -->
+          <rect x="62" y="34" width="120" height="9" rx="0" fill="rgba(232,67,45,.1)"/>
+          <rect x="64" y="36" width="6"   height="5" rx="2" fill="#E8432D" opacity=".5"/>
+          <rect x="74" y="37" width="50"  height="5" rx="2" fill="rgba(255,255,255,.18)"/>
+          <!-- ADDED lines (green) -->
+          <rect x="62" y="44" width="120" height="9" rx="0" fill="rgba(107,175,120,.18)"/>
+          <rect x="64" y="46" width="6"   height="5" rx="2" fill="#6BAF78" opacity=".9"/>
+          <rect x="74" y="47" width="88"  height="5" rx="2" fill="rgba(107,175,120,.7)"/>
+          <rect x="62" y="54" width="120" height="9" rx="0" fill="rgba(107,175,120,.15)"/>
+          <rect x="64" y="56" width="6"   height="5" rx="2" fill="#6BAF78" opacity=".8"/>
+          <rect x="74" y="57" width="60"  height="5" rx="2" fill="rgba(107,175,120,.6)"/>
+          <rect x="62" y="64" width="120" height="9" rx="0" fill="rgba(107,175,120,.12)"/>
+          <rect x="64" y="66" width="6"   height="5" rx="2" fill="#6BAF78" opacity=".7"/>
+          <rect x="74" y="67" width="74"  height="5" rx="2" fill="rgba(107,175,120,.5)"/>
+          <!-- Normal code lines -->
+          <rect x="74" y="77" width="14" height="5" rx="2" fill="#E8432D" opacity=".6"/>
+          <rect x="92" y="77" width="60" height="5" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="74" y="87" width="8"  height="5" rx="2" fill="#6BAF78" opacity=".6"/>
+          <rect x="86" y="87" width="72" height="5" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="74" y="97" width="18" height="5" rx="2" fill="#F0A030" opacity=".7"/>
+          <rect x="96" y="97" width="48" height="5" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="74" y="107" width="6"  height="5" rx="2" fill="rgba(255,255,255,.6)">
+            <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
+          </rect>
+          <!-- Status bar -->
+          <rect x="44" y="130" width="144" height="14" fill="#5E6AD2" opacity=".85"/>
+          <rect x="50" y="133" width="30" height="4" rx="2" fill="rgba(255,255,255,.5)"/>
+          <rect x="86" y="133" width="24" height="4" rx="2" fill="rgba(255,255,255,.35)"/>
+          <circle cx="148" cy="137" r="4" fill="#6BAF78"/>
+          <rect x="155" y="134" width="24" height="4" rx="2" fill="rgba(255,255,255,.4)"/>
+        </svg>
+        <h3>First results in week one.</h3>
+        <p class="step-sub">Not a plan. Working code.</p>
+        <p class="step-body">We don't do discovery sprints or stakeholder workshops. Your engineer picks up the first ticket and ships. You review real work before the first invoice.</p>
+        <div class="tags">
+          <span class="tag">Daily updates</span>
+          <span class="tag">You own the code</span>
+          <span class="tag">No lock-in</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 04 -->
+    <div class="step">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="step-num">04</div>
+      </div>
+      <div class="step-card">
+        <!-- Management dashboard illustration -->
+        <svg class="step-illo" width="188" height="144" viewBox="0 0 188 144" fill="none">
+          <defs>
+            <filter id="shield-glow">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(107,175,120,.25)"/>
+            </filter>
+          </defs>
+          <!-- Background -->
+          <rect width="188" height="144" rx="14" fill="#F3F1EA"/>
+
+          <!-- Central shield -->
+          <g transform="translate(70, 12)" filter="url(#shield-glow)">
+            <path d="M24 0 L48 14 L48 36 Q48 56 24 64 Q0 56 0 36 L0 14 Z" fill="#0D1624"/>
+            <path d="M24 6 L42 17 L42 36 Q42 51 24 58 Q6 51 6 36 L6 17 Z" fill="#1A2B44"/>
+            <path d="M14 32 L22 41 L36 25" stroke="#6BAF78" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="32" r="18" fill="none" stroke="#6BAF78" stroke-width="1" opacity=".3"/>
+          </g>
+
+          <!-- Three mini cards: Payroll, Compliance, Replacement -->
+          <!-- Payroll card -->
+          <rect x="6"  y="88" width="54" height="48" rx="10" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+          <rect x="12" y="94" width="20" height="20" rx="6" fill="rgba(94,106,210,.12)"/>
+          <!-- Dollar sign icon -->
+          <text x="17" y="109" font-size="12" fill="#5E6AD2" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">$</text>
+          <rect x="12" y="118" width="36" height="5"  rx="2.5" fill="#0D1624" opacity=".6"/>
+          <rect x="12" y="127" width="28" height="4"  rx="2" fill="#E3E0D6"/>
+
+          <!-- Compliance card -->
+          <rect x="67" y="88" width="54" height="48" rx="10" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+          <rect x="73" y="94" width="20" height="20" rx="6" fill="rgba(107,175,120,.12)"/>
+          <!-- Checkmark icon -->
+          <path d="M77 104 L80 107 L85 99" stroke="#6BAF78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="73" y="118" width="36" height="5"  rx="2.5" fill="#0D1624" opacity=".6"/>
+          <rect x="73" y="127" width="28" height="4"  rx="2" fill="#E3E0D6"/>
+
+          <!-- Replacement guarantee card -->
+          <rect x="128" y="88" width="54" height="48" rx="10" fill="white" stroke="#E3E0D6" stroke-width="1"/>
+          <rect x="134" y="94" width="20" height="20" rx="6" fill="rgba(232,67,45,.1)"/>
+          <!-- Refresh/swap icon -->
+          <path d="M137 104 A6 6 0 1 1 144 107" stroke="#E8432D" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <polygon points="144,107 147,104 147,110" fill="#E8432D"/>
+          <rect x="134" y="118" width="36" height="5"  rx="2.5" fill="#0D1624" opacity=".6"/>
+          <rect x="134" y="127" width="28" height="4"  rx="2" fill="#E3E0D6"/>
+
+          <!-- Labels -->
+          <text x="9"   y="142" font-size="8" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Payroll</text>
+          <text x="63"  y="142" font-size="8" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Compliance</text>
+          <text x="130" y="142" font-size="8" fill="#8A909E" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Replacement</text>
+
+          <!-- Gold star badge (top-right of shield) -->
+          <circle cx="158" cy="24" r="18" fill="white" stroke="#E3E0D6" stroke-width="1.5"/>
+          <path d="M158 12 L161 19 L169 19 L163 24 L165 31 L158 27 L151 31 L153 24 L147 19 L155 19 Z" fill="#F0A030"/>
+        </svg>
+        <h3>You run the business. We handle the rest.</h3>
+        <p class="step-sub">Payroll, compliance, vetting — invisible to you.</p>
+        <p class="step-body">We pay your engineer, handle contracts, and take care of compliance. If something isn't working, we replace them fast. You never deal with HR or invoices again.</p>
+        <div class="tags">
+          <span class="tag">Payroll managed</span>
+          <span class="tag">Compliance covered</span>
+          <span class="tag">Free replacement guarantee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step CTA -->
+  <div class="step-cta-box fade-up">
+    <h3>Ready to ship this week?</h3>
+    <p>Most teams have an engineer in their Slack within 48 hours.</p>
+    <a href="#contact" class="btn-primary" style="font-size:15px;padding:14px 32px;">Start Monday →</a>
+  </div>
+</section>
+
+<!-- ── COMPARISON ── -->
+<section class="comparison" id="comparison">
+  <div class="section-header fade-up">
+    <div class="section-label">Why Flexsible</div>
+    <h2>The numbers don't lie.</h2>
+    <p>Compare on the metrics that actually matter.</p>
+  </div>
+  <div class="comp-wrap fade-up">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="th-flex">
+            <svg width="18" height="18" viewBox="0 0 18 18" style="display:block;margin-bottom:6px"><circle cx="9" cy="9" r="9" fill="rgba(255,255,255,.2)"/><path d="M4.5 9l3.5 3.5 6-7" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Flexsible
+          </th>
+          <th class="th-trad">Traditional Hiring</th>
+          <th class="th-free">Freelance Networks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Time to deployment</td>
+          <td><span class="yes">Days</span></td>
+          <td><span class="no">8–16 weeks</span></td>
+          <td><span class="maybe">Highly variable</span></td>
+        </tr>
+        <tr>
+          <td>Pricing model</td>
+          <td><span class="yes">Predictable flat rate</span></td>
+          <td><span class="no">Salary + benefits + equity</span></td>
+          <td><span class="maybe">Unpredictable hourly</span></td>
+        </tr>
+        <tr>
+          <td>Workflow integration</td>
+          <td><span class="yes">Embedded in your workflow</span></td>
+          <td><span class="no">Months to onboard</span></td>
+          <td><span class="maybe">Siloed &amp; disconnected</span></td>
+        </tr>
+        <tr>
+          <td>AI-native engineers</td>
+          <td><span class="yes">Always</span></td>
+          <td><span class="no">Hard to find</span></td>
+          <td><span class="maybe">Hit or miss</span></td>
+        </tr>
+        <tr>
+          <td>Cancellation</td>
+          <td><span class="yes">Month-to-month</span></td>
+          <td><span class="no">Employment contract</span></td>
+          <td><span class="maybe">Variable</span></td>
+        </tr>
+        <tr>
+          <td>Code ownership</td>
+          <td><span class="yes">Day one</span></td>
+          <td><span class="yes">Yes</span></td>
+          <td><span class="no">Read the contract</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── TESTIMONIAL ── -->
+<section class="testimonial">
+  <span class="quote-mark fade-in">"</span>
+  <blockquote class="fade-up">
+    Flexsible's embedded engineer shipped our core AI features in record time and took complete ownership of our tech stack. Best engineering decision we made this year.
+  </blockquote>
+  <div class="t-author fade-up">
+    <div class="t-avatar"><img src="joshua.png" alt=""></div>
+    <div>
+      <strong>Marcus T.</strong>
+      <span>CTO, Series A AI Startup</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
+  <div class="section-header fade-up">
+    <div class="section-label">Pricing</div>
+    <h2>Simple monthly pricing.</h2>
+    <p>No hourly rates. No surprises. Cancel anytime.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="p-card fade-up">
+      <div class="p-tier">Fractional Support</div>
+      <div class="p-price">$8–10K</div>
+      <div class="p-period">per month</div>
+      <div class="p-desc">Best for early-stage startups. Async support, bug fixes, one active AI task at a time.</div>
+      <ul class="p-feats">
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Async support &amp; bug fixes</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>One active AI task</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>GitHub or Linear managed</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Zero meetings required</li>
+      </ul>
+      <a href="#contact" class="btn-p-outline">Start Monday →</a>
+    </div>
+    <div class="p-card hot fade-up" style="transition-delay:.1s">
+      <div class="hot-badge">Most Popular</div>
+      <div class="p-tier">Embedded Engineer</div>
+      <div class="p-price"><span class="p-from">Starts at</span>$16K</div>
+      <div class="p-period">per month</div>
+      <div class="p-desc">Best for scale-ups. A dedicated senior AI engineer fully integrated into your workflow.</div>
+      <ul class="p-feats">
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dedicated senior AI engineer</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Real-time Slack collaboration</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>GitHub/Jira/CI integration</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Ships from day one</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Free replacement guarantee</li>
+      </ul>
+      <a href="#contact" class="btn-p-white">Start Monday →</a>
+    </div>
+    <div class="p-card fade-up" style="transition-delay:.2s">
+      <div class="p-tier">The Agile Pod</div>
+      <div class="p-price"><span class="p-from">Starts at</span>$25K</div>
+      <div class="p-period">per month · full team</div>
+      <div class="p-desc">For enterprises. Multi-disciplinary AI, frontend, and cloud infrastructure team with full product ownership.</div>
+      <ul class="p-feats">
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Full product ownership</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>AI + Frontend + Cloud infra</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>HIPAA, SOC 2, USWDS</li>
+        <li><div class="f-dot"><svg width="9" height="7" viewBox="0 0 9 7"><path d="M1 3.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Enterprise compliance</li>
+      </ul>
+      <a href="#contact" class="btn-p-outline">Talk to Us →</a>
+    </div>
+  </div>
+  <div class="scarcity fade-up">
+    ⚠&nbsp; Currently: Only <span id="slot-count">2</span> subscription <span id="slot-word">slots</span> available for next week's deployment.
+  </div>
+</section>
+
+<!-- ── CLOSE CTA ── -->
+<section class="close-cta" id="contact">
+  <h2 class="fade-up">Ready to turn that prototype<br>into a product?</h2>
+  <p class="fade-up">One call. We'll tell you honestly if we're the right fit.</p>
+  <div class="cc-btns fade-up">
+    <a href="#" class="btn-cc-primary">Get Your Engineer →</a>
+  </div>
+  <p class="close-note fade-up">Most clients have an engineer on their team within 5 business days.</p>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="#" class="f-logo"><img src="FlexsibleLogo-white-hi.png" alt="Flexsible"></a>
+      <p class="f-tag">Ship faster. Own your code. Real engineers.</p>
+    </div>
+    <ul class="f-nav">
+      <li><a href="#how">What We Do</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Get Your Engineer</a></li>
+    </ul>
+    <p class="f-copy">© 2026 Flexsible. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ── QUALIFY MODAL ── -->
+<div class="qf-overlay" id="qf-overlay" role="dialog" aria-modal="true" aria-labelledby="qf-title">
+  <div class="qf-modal">
+    <button class="qf-close" id="qf-close" aria-label="Close">&times;</button>
+    <p class="qf-eyebrow">Before we talk</p>
+    <h2 id="qf-title">Tell us what you're building</h2>
+    <p class="qf-intro">A few quick questions so your engineer comes to the call ready to ship. Takes under a minute.</p>
+
+    <form id="qf-form">
+      <div class="qf-progress"><div class="qf-progress-bar" id="qf-progress-bar"></div></div>
+      <div class="qf-q">
+        <label class="qf-label" for="qf-building">1. What are you building right now? <span class="req">*</span></label>
+        <input class="qf-input" type="text" id="qf-building" name="building" placeholder="e.g. An AI tool that summarizes medical records" required>
+      </div>
+
+      <div class="qf-q">
+        <span class="qf-label">2. What best describes your current stage? <span class="req">*</span></span>
+        <div class="qf-options">
+          <input type="radio" name="stage" id="stage1" value="Idea / planning" required><label for="stage1">Idea / planning</label>
+          <input type="radio" name="stage" id="stage2" value="Prototype built"><label for="stage2">Prototype built</label>
+          <input type="radio" name="stage" id="stage3" value="MVP live"><label for="stage3">MVP live</label>
+          <input type="radio" name="stage" id="stage4" value="Users already using it"><label for="stage4">Users already using it</label>
+          <input type="radio" name="stage" id="stage5" value="Scaling / need more engineering help"><label for="stage5">Scaling / need more help</label>
+        </div>
+      </div>
+
+      <div class="qf-q">
+        <span class="qf-label">3. What did you build with?</span>
+        <div class="qf-options">
+          <input type="radio" name="builtwith" id="bw1" value="Cursor"><label for="bw1">Cursor</label>
+          <input type="radio" name="builtwith" id="bw2" value="Lovable"><label for="bw2">Lovable</label>
+          <input type="radio" name="builtwith" id="bw3" value="Bolt"><label for="bw3">Bolt</label>
+          <input type="radio" name="builtwith" id="bw4" value="Replit"><label for="bw4">Replit</label>
+          <input type="radio" name="builtwith" id="bw5" value="v0"><label for="bw5">v0</label>
+          <input type="radio" name="builtwith" id="bw6" value="Custom code"><label for="bw6">Custom code</label>
+          <input type="radio" name="builtwith" id="bw7" value="Other"><label for="bw7">Other</label>
+        </div>
+      </div>
+
+      <div class="qf-q">
+        <span class="qf-label">4. What do you need help with most? <span class="req">*</span></span>
+        <div class="qf-options">
+          <input type="radio" name="need" id="need1" value="Fixing bugs" required><label for="need1">Fixing bugs</label>
+          <input type="radio" name="need" id="need2" value="Turning a prototype into a real product"><label for="need2">Prototype → real product</label>
+          <input type="radio" name="need" id="need3" value="Adding AI features"><label for="need3">Adding AI features</label>
+          <input type="radio" name="need" id="need4" value="Backend / database / APIs"><label for="need4">Backend / database / APIs</label>
+          <input type="radio" name="need" id="need5" value="Frontend / UI polish"><label for="need5">Frontend / UI polish</label>
+          <input type="radio" name="need" id="need6" value="Deployment / scaling"><label for="need6">Deployment / scaling</label>
+          <input type="radio" name="need" id="need7" value="Healthcare / HIPAA-related build"><label for="need7">Healthcare / HIPAA build</label>
+          <input type="radio" name="need" id="need8" value="Not sure yet"><label for="need8">Not sure yet</label>
+        </div>
+      </div>
+
+      <div class="qf-q">
+        <span class="qf-label">5. When do you want someone to start? <span class="req">*</span></span>
+        <div class="qf-options">
+          <input type="radio" name="start" id="start1" value="This week" required><label for="start1">This week</label>
+          <input type="radio" name="start" id="start2" value="Within 2 weeks"><label for="start2">Within 2 weeks</label>
+          <input type="radio" name="start" id="start3" value="This month"><label for="start3">This month</label>
+          <input type="radio" name="start" id="start4" value="Just exploring"><label for="start4">Just exploring</label>
+        </div>
+      </div>
+
+      <div class="qf-q">
+        <span class="qf-label">6. What monthly budget range are you comfortable with? <span class="req">*</span></span>
+        <div class="qf-options">
+          <input type="radio" name="budget" id="bud2" value="$8K–$10K/month" required><label for="bud2">$8K–$10K/mo</label>
+          <input type="radio" name="budget" id="bud3" value="$12K–$15K/month"><label for="bud3">$12K–$15K/mo</label>
+          <input type="radio" name="budget" id="bud4" value="$15K+/month"><label for="bud4">$15K+/mo</label>
+          <input type="radio" name="budget" id="bud5" value="Not sure yet"><label for="bud5">Not sure yet</label>
+        </div>
+      </div>
+
+      <div class="qf-q">
+        <label class="qf-label" for="qf-notes">7. Anything else we should know before the call?</label>
+        <textarea class="qf-textarea" id="qf-notes" name="notes" placeholder="Optional — links, context, deadlines…"></textarea>
+      </div>
+
+      <div class="qf-err" id="qf-err"></div>
+      <div class="qf-nav">
+        <button type="button" class="qf-back" id="qf-back" disabled>← Back</button>
+        <span class="qf-step-count" id="qf-step-count">1 / 7</span>
+        <button type="button" class="qf-next" id="qf-next">Next →</button>
+      </div>
+      <p class="qf-foot">You'll pick a time on the next screen.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll('.fade-up, .fade-in, .step').forEach(el => io.observe(el));
+
+  document.querySelectorAll('.step').forEach((s, i) => {
+    s.style.transitionDelay = `${i * 0.12}s`;
+  });
+
+  // Daily-varying scarcity count: changes each day, stays low (around / under 2)
+  (function () {
+    const counts = [3, 2, 4, 2, 5, 3, 2]; // varies daily, never below 2, never above 10
+    const now = new Date();
+    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    const n = counts[dayOfYear % counts.length];
+    const cEl = document.getElementById('slot-count');
+    const wEl = document.getElementById('slot-word');
+    if (cEl) cEl.textContent = n;
+    if (wEl) wEl.textContent = n === 1 ? 'slot' : 'slots';
+  })();
+
+  // ── Qualification modal → Google Calendar ──
+  (function () {
+    const CAL_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1HNtNLMNaOXHa328vBj_7zMl_iz1XyDj-iwiXA9ZCN2Bds6M2zU7hzsl7al41StqrDdLr_4dwP';
+    const overlay = document.getElementById('qf-overlay');
+    const form = document.getElementById('qf-form');
+    const closeBtn = document.getElementById('qf-close');
+
+    const steps = Array.from(form.querySelectorAll('.qf-q'));
+    const bar = document.getElementById('qf-progress-bar');
+    const backBtn = document.getElementById('qf-back');
+    const nextBtn = document.getElementById('qf-next');
+    const countEl = document.getElementById('qf-step-count');
+    const errEl = document.getElementById('qf-err');
+    let cur = 0;
+
+    function render() {
+      steps.forEach((s, i) => s.classList.toggle('active', i === cur));
+      bar.style.width = ((cur + 1) / steps.length * 100) + '%';
+      countEl.textContent = (cur + 1) + ' / ' + steps.length;
+      backBtn.disabled = cur === 0;
+      nextBtn.textContent = cur === steps.length - 1 ? 'Book my call →' : 'Next →';
+      errEl.textContent = '';
+      const focusable = steps[cur].querySelector('input, textarea');
+      if (focusable) setTimeout(() => focusable.focus(), 80);
+    }
+
+    // Validate the current step; returns true if it may advance
+    function validStep() {
+      const required = steps[cur].querySelectorAll('[required]');
+      if (!required.length) return true;
+      const first = required[0];
+      if (first.type === 'radio') {
+        const name = first.name;
+        if (!form.querySelector('input[name="' + name + '"]:checked')) {
+          errEl.textContent = 'Please pick an option to continue.';
+          return false;
+        }
+      } else if (!first.value.trim()) {
+        errEl.textContent = 'Please fill this in to continue.';
+        return false;
+      }
+      return true;
+    }
+
+    function open(e) { if (e) e.preventDefault(); cur = 0; render(); overlay.classList.add('open'); document.body.classList.add('qf-locked'); }
+    function close() { overlay.classList.remove('open'); document.body.classList.remove('qf-locked'); }
+
+    nextBtn.addEventListener('click', function () {
+      if (!validStep()) return;
+      if (cur < steps.length - 1) { cur++; render(); }
+      else { window.location.href = CAL_URL; }
+    });
+    backBtn.addEventListener('click', function () { if (cur > 0) { cur--; render(); } });
+
+    // Enter advances (except inside the textarea)
+    form.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); nextBtn.click(); }
+    });
+    // Picking a radio auto-advances for a snappy one-question-at-a-time feel
+    form.addEventListener('change', function (e) {
+      if (e.target.type === 'radio' && cur < steps.length - 1) {
+        errEl.textContent = '';
+        setTimeout(() => { if (validStep()) { cur++; render(); } }, 220);
+      }
+    });
+    form.addEventListener('submit', function (e) { e.preventDefault(); window.location.href = CAL_URL; });
+
+    // Wire every booking CTA (anything pointing at #contact, plus the closing CTA button)
+    document.querySelectorAll('a[href="#contact"], .btn-cc-primary').forEach(el => el.addEventListener('click', open));
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+  })();
+</script>
+</body>
+</html>
